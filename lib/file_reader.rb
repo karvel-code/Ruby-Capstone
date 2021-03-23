@@ -219,5 +219,24 @@ class Checking
             a += 1 if line[i] == ' '
             break if line[i] != ' '
         end
+        a
+    end
+
+    def indent(code)
+        x = blocker(code)
+        array = Array.new
+        spacing = 0 
+        (x.length - 1).times do |i|
+            a = x[i]
+            b = x[i + 1]
+            if x[0] != 'end'
+                spacing += 2
+                arr << [space, a[1], b[1]]    
+            else   
+                spacing -= 2
+                array << [spacinga[1], b[1]]
+            end
+        end
+        array
     end
 end
