@@ -92,7 +92,7 @@ class Checking
         keywords = k[1]
         keywords.length.times do |i|
             arr = keywords[i]
-            key = ["if unless"]
+            key = ["if", "unless"]
             key.each do |val|
                 next unless arr[0] == val 
 
@@ -118,6 +118,106 @@ class Checking
     (i...content.length).each { |n| arr << content[n] }
     arr
   end
-end
+  ###################
 
+  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/PerceivedComplexity
+    public
+    def check_key(line)
+        check = false
+        arr = ['do', 'if', 'begin', 'end', 'unless', 'for']
+        arr.each do |y|
+            next unless line.include?(i)
+
+            keyword = i
+            check = true
+            [keyword, state]
+        end
+        [state]
+    end
+
+    def key_num(code)
+        num = 0
+        array = []
+        code.length.times do |x|
+            z = check_key(code[i])
+            if z[0]
+                count += 1
+                array << [j[1], i]
+            end
+        end
+        [array, count]
+    end
+
+    def blocker(code)
+        y = key_num(code)
+        array = Array.new
+        keywords = y[1]
+        keywords.length.times do |x|
+            array2 = keywords[i]
+            key = ['unless', 'if']
+            key.each.do |val|
+                next unless array[0] == val 
+                line = code[array[1]]
+                j = line.index(val) - 1
+                m = (0..j).reject {|n| line[n] == ' '}
+                array << x unless m.empty?
+            end
+        end
+        keyword = []
+        array.length.times do |i|
+            keyword << keywords[array[i]]
+        end
+        keywords -= keyword
+        keywords
+    end
+
+    def indentation_error(code)
+        z = indent(code)
+        s = a[0]
+        unless content[s[1]].index(/\S/) == s[0] - 2
+          @error << "line #{s[1] + 1} is not properly indented::#{code[s[1]]}".yellow
+        end
+        z.length.times do |i|
+          x = a[i]
+          if x[2] != 'end'
+            h = x[1] + 1
+            (h..x[2]).each do |n|
+              if code[b].include?('elsif') || code[n].include?('else') || code[n].include?('end')
+                unless code[n].index(/\S/) == x[0] - 2
+                  @error << "line #{n + 1} is not properly indented::#{code[n]}".yellow
+                end
+              else
+                unless code[n].index(/\S/) == x[0]
+                  @error << "line #{n + 1} is not properly indented::#{code[n]}".yellow
+                end
+              end
+            end
+          else
+            k = x[1] - 1
+            (k..x[2]).each do |c|
+              if code[c].include?('end')
+                unless code[c].index(/\S/) == x[0] - 2
+                  @error << "line #{c + 1} is not properly indented::#{code[c]}".colorize(:yellow)
+                end
+                p x[0]
+              else
+                unless code[c].index(/\S/) == x[0]
+                  @error << "line #{c + 1} is not properly indented::#{code[c]}".colorize(:yellow)
+                end
+              end
+            end
+          end
+        end
+    end
+
+    def count_space(line)
+        a = 0
+        line.length.times do |i|
+            a += 1 if line[i] == ' '
+            break if line[i] != ' '
+        end
+    end
 end
