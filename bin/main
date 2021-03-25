@@ -1,4 +1,35 @@
 #!/usr/bin/env ruby
 
 require 'colorize'
+require_relative '../lib/error_methods.rb'
+require_relative '../lib/example.rb'
 puts 'Hello'.red
+
+path = ARGV
+j = path[0]
+error_warning = Array.new
+check = Checking.new(error_warning)
+
+begin if j.end_with?('.rb')
+    f = File.open(path[0])
+    code = f.readlines.map(&:chomp)
+else
+    error_warning << "Include a file with the extention .rb".red
+end
+rescue StandardError => e
+    error_warning <<    "Please confirm the path or the filename\n".red
+end
+
+code.length.times do |n|
+    line = code[n]
+    error_warning << "There exists trailing spaces at line #{n + 1}".red if check.trailing_space(line)
+end
+check.check_for(code)
+check.confirm_end(code)
+check.check_empty_line(code)
+if error_warning.empty?
+    puts "#{'No Offenses'.green} detected."
+else
+    puts error_warning
+end
+
