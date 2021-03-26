@@ -10,3 +10,7 @@ def validate(move)
   end
   [valid, error]
 end
+
+for i in 1..10
+  puts i
+end

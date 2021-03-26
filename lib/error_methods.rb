@@ -14,7 +14,7 @@ class Checking
   def check_for(code)
     code.length.times do |i|
       line = code[i]
-      @error << "line: #{i + 1} times and each are suitable as compared to for".red if line.include?('for')
+      @error << "line #{i + 1}: times and each are suitable as compared to for".red if line.include?('for')
     end
   end
 
@@ -28,7 +28,7 @@ class Checking
   def confirm_end(code)
     a = block(code)
     b = check_end(code)
-    @error << 'missing end tag'.red if a != b
+    @error << 'There is either a missing or extra end tag'.red if a != b
   end
 
   def last_end(code)
@@ -84,22 +84,22 @@ class Checking
     array = []
     keywords = k[1]
     keywords.length.times do |i|
-      arr = keywords[i]
+      array_two = keywords[i]
       key = %w[if unless]
       key.each do |val|
-        next unless arr[0] == val
+        next unless array_two[0] == val
 
-        line = code[arr[1]]
+        line = code[array_two[1]]
         k = line.index(val) - 1
         res = (0..k).reject { |n| line[n] == ' ' }
         array << i unless res.empty?
       end
     end
     keyword = []
-    array.length.times do |i|
-      keyword << keywords[array[i]]
+    array.length.times do |n|
+      keyword << keywords[array[n]]
     end
-    keyword -= keyword
+    keywords -= keyword
     keywords.length
   end
 
