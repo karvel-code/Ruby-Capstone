@@ -34,7 +34,7 @@ class Checking
   def last_end(code)
     arr = []
     x = 0
-    while x < code.length
+    until x == code.length
       arr << x if code[x].include?('end')
       x += 1
     end
@@ -112,8 +112,6 @@ class Checking
     (i...code.length).each { |n| arr << code[n] }
     arr
   end
-
-  ###################
 
   public
 
