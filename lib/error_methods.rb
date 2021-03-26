@@ -50,7 +50,7 @@ class Checking
 
       keyword = i
       check = true
-      return [keyword, check]
+      return [check, keyword]
     end
     [check]
   end
@@ -66,7 +66,7 @@ class Checking
         arr << [j[1], i]
       end
     end
-    [arr, count]
+    [count, arr]
   end
 
   def check_end(code)
@@ -89,7 +89,7 @@ class Checking
       key.each do |val|
         next unless arr[0] == val
 
-        line = content[arr[1]]
+        line = code[arr[1]]
         k = line.index(val) - 1
         res = (0..k).reject { |n| line[n] == ' ' }
         array << i unless res.empty?

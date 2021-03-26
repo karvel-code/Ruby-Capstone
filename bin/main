@@ -2,7 +2,7 @@
 
 require 'colorize'
 require_relative '../lib/error_methods.rb'
-require_relative '../lib/example.rb'
+# require_relative '../lib/example.rb'
 puts 'Hello'.red
 
 path = ARGV
