@@ -12,12 +12,33 @@ error = []
 check = Checking.new(error)
 
 describe '#Checking' do 
-    describe '#Checking.trailing_space' do
+    describe '#trailing_space' do
         it 'returns true if there is a trailing space and false when there is no trailing space' do
-            line1 = ' if block_given? '
-            line2 = 'if block_given?'
-            expect(check.trailing_space(line1)).to eq(true)
-            # expect(check.trailing_space(line2)).to eq(false)
+            line3 = ' if block_given? '
+            line4 = 'if block_given?'
+            expect(check.trailing_space(line3)).to eq(true)
+            expect(check.trailing_space(line4)).to eq(false)
+        end
+    end
+
+    describe '#check_keywords' do
+        it 'returns true and keyword name' do
+            expect(check.check_keywords(line1).to eq([true, 'def ']))
+        end
+        it 'returns false array if not contain the keywords' do
+            expect(check.check_keywords(line2)).to eq([false])
+        end
+    end
+
+    # describe '#keyword_count' do
+    #     it 'return the keyword count and the line number' do
+    #         expect(check.keyword_count(file)).to eq(res)
+    #     end
+    # end
+
+    describe '#block' do
+        it 'counts no of blocks and ends' do
+            expect(check.block(file)).to eq(4)
         end
     end
 end
