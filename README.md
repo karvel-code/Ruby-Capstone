@@ -22,7 +22,7 @@ $ cd folder-name
   
  ## To run this linter on a file:
  
- $ ./bin/main filename e.g. ./bin/main /lib/example.rb
+ $ ./bin/main filename e.g. bin/main lib/example.rb
 
  ## To test the file:
 
