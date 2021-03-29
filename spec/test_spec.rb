@@ -4,7 +4,7 @@ require_relative '../lib/error_methods'
 file = ['def validate(move)', ' valid = true ', "  error = ' ' ", ' if move < 1 or move > 9 ',
         '    valid = false', '    error = "Number is not between 0 and 9"', '  elsif @board[move - 1].is_a? String',
         '    valid = false', '    error = "The cell is not empty"', '  end', '  [valid, error]', 'end']
-res = [3, [['def', 0], ['if', 3], ['if', 6]]]
+str = [3, [['def', 0], ['if', 3], ['if', 6]]]
 line1 = 'if move < 1 or move > 9'
 line2 = 'valid = true'
 error = []
@@ -31,7 +31,7 @@ describe '#Checking' do
 
   describe '#keyword_count' do
     it 'return the keyword count and the line number' do
-      expect(check.keyword_count(file)).to eq(res)
+      expect(check.keyword_count(file)).to eq(str)
     end
   end
 
