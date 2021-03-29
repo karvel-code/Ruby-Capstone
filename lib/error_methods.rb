@@ -1,6 +1,8 @@
 require 'colorize'
 
 class Checking
+  attr_reader :array
+
   def initialize(array)
     @error = array
   end
