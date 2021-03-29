@@ -19,7 +19,7 @@ class Checking
   end
 
   def check_empty_line(line)
-    ety_line= empty_line(line).length
+    ety_line = empty_line(line).length
     line_length = line.length
     empty_line_count = line_length - ety_line
     @error << "There exists #{empty_line_count} empty lines at the beginning".red if empty_line_count >= 1
