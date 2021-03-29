@@ -44,7 +44,7 @@ class Checking
 
   def check_keywords(line)
     check = false
-    k_words = ['unless', 'do', 'if', 'def', 'for', 'module', 'class']
+    k_words = %w[unless do if def for module class]
     k_words.each do |i|
       next unless line.include?(i)
 
