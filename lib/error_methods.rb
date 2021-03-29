@@ -19,16 +19,16 @@ class Checking
   end
 
   def check_empty_line(line)
-    a = empty_line(line).length
-    b = line.length
-    c = b - a
-    @error << "There exists #{c} empty lines at the beginning".red if c >= 1
+    ety_line= empty_line(line).length
+    line_length = line.length
+    empty_line_count = line_length - ety_line
+    @error << "There exists #{empty_line_count} empty lines at the beginning".red if empty_line_count >= 1
   end
 
   def confirm_end(code)
-    a = block(code)
-    b = check_end(code)
-    @error << 'There is either a missing or extra end tag'.red if a != b
+    no_of_blocks = block(code)
+    no_of_ends = check_end(code)
+    @error << 'There is either a missing or extra end tag'.red if no_of_blocks != no_of_ends
   end
 
   def last_end(code)
@@ -142,9 +142,9 @@ class Checking
   end
 
   def blocker(code)
-    y = key_num(code)
+    key_no = key_num(code)
     array = []
-    keywords = y[1]
+    keywords = key_no[1]
     keywords.length.times do |x|
       array2 = keywords[i]
       key = %w[unless if]
@@ -152,8 +152,8 @@ class Checking
         next unless array2[0] == val
 
         line = code[array[1]]
-        j = line.index(val) - 1
-        m = (0..j).reject { |n| line[n] == ' ' }
+        line_index = line.index(val) - 1
+        m = (0..line_index).reject { |n| line[n] == ' ' }
         array << x unless m.empty?
       end
     end
@@ -175,13 +175,13 @@ class Checking
   end
 
   def indent(code)
-    x = blocker(code)
+    blocker_ret = blocker(code)
     array = []
     spacing = 0
-    (x.length - 1).times do |i|
-      a = x[i]
-      b = x[i + 1]
-      if x[0] != 'end'
+    (blocker_ret.length - 1).times do |i|
+      a = blocker_ret[i]
+      b = blocker_ret[i + 1]
+      if blocker_ret[0] != 'end'
         spacing += 2
         arr << [spacing, a[1], b[1]]
       else
