@@ -59,6 +59,4 @@ describe '#Checking' do
       expect(check.count_space(file)).to eql(0)
     end
   end
-
-
 end
