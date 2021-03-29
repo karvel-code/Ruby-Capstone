@@ -16,7 +16,7 @@ begin if j.end_with?('.rb')
       else
         error_warning << 'Include a file with the extention .rb'.red
       end
-rescue StandardError => e
+rescue StandardError
   error_warning << "Please confirm the path or the filename\n".red
 end
 

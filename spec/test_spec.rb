@@ -42,13 +42,13 @@ describe '#Checking' do
   end
 
   describe 'check_end' do
-    it 'returns the count of ends' do
+    it 'returns the total number of ends' do
       expect(check.check_end(file)).to eql(2)
     end
   end
 
   describe 'last_end' do
-    it 'returns last line number which contain last end' do
+    it 'returns last line number or position that holds last end' do
       expect(check.last_end(file)).to eql(11)
     end
   end
