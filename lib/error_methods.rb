@@ -125,9 +125,9 @@ class Checking
 
       keyword = y
       check = true
-      return [keyword, state]
+      return [keyword, check]
     end
-    [state]
+    [check]
   end
 
   def key_num(code)
@@ -137,10 +137,10 @@ class Checking
       z = check_key(code[x])
       if z[0]
         num += 1
-        array << [j[1], x]
+        array << [z[1], x]
       end
     end
-    [array, count]
+    [array, num]
   end
 
   def blocker(code)

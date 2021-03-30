@@ -7,7 +7,6 @@ Its a customised linter for ruby.The whole idea of writing code to check another
 It checks following style errors:
 checks for empty lines at the beginning
 trailing spaces
-proper indentation
 suggestion of good coding practices such as use of 'each', 'until' over 'for'
 open ends
 
@@ -28,10 +27,6 @@ $ cd folder-name
 
  run following command from the root folder:
  $ rspec
-
- ## Indentation Error
- 
- ![Screenshot](Screenshot1.png)
 
  ## Empty Line error
  
