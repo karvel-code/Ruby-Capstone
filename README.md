@@ -5,10 +5,10 @@ Its a customised linter for ruby.The whole idea of writing code to check another
 ## About the Customized Linter
 
 It checks following style errors:
-Checks for empty lines at the beginning
-Trailing spaces (appearing after the end of the line)
-Suggestion of good coding practices such as use of 'each', 'until' over 'for'
-Open ends
+- Checks for empty lines at the beginning
+- Trailing spaces (appearing after the end of the line)
+- Suggestion of good coding practices such as use of 'each', 'until' over 'for'
+- Open ends
 
 ## Getting Started
 
