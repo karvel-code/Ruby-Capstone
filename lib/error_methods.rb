@@ -175,22 +175,4 @@ class Checking
     end
     a
   end
-
-  def indent(code)
-    blocker_ret = blocker(code)
-    array = []
-    spacing = 0
-    (blocker_ret.length - 1).times do |i|
-      a = blocker_ret[i]
-      b = blocker_ret[i + 1]
-      if blocker_ret[0] != 'end'
-        spacing += 2
-        arr << [spacing, a[1], b[1]]
-      else
-        spacing -= 2
-        array << [spacing, a[1], b[1]]
-      end
-    end
-    array
-  end
 end
