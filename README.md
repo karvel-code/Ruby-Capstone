@@ -1,14 +1,14 @@
-# ruby_capstone- linters for Ruby
+# Ruby_capstone- linters for Ruby
 
 Its a customised linter for ruby.The whole idea of writing code to check another code is intriguing at the same time cognitively demanding. Building Linters for Ruby, the project provides feedback about errors or warning in code. The project was built completely with Ruby following all possible best practices. Rubocop was used as a code-linter alongside Gitflow to ensure I maintain good coding standards.
 
 ## About the Customized Linter
 
 It checks following style errors:
-checks for empty lines at the beginning
-trailing spaces
-suggestion of good coding practices such as use of 'each', 'until' over 'for'
-open ends
+Checks for empty lines at the beginning
+Trailing spaces (appearing after the end of the line)
+Suggestion of good coding practices such as use of 'each', 'until' over 'for'
+Open ends
 
 ## Getting Started
 
